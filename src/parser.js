@@ -54,6 +54,7 @@ parseFile = function parseFile(baseDir, file) {
     var _astDefinitions;
 
     template = ref1[i];
+    template = template.replace(/\\n/g, '\n');
     ast = GraphQL.parse(new GraphQL.Source(template, file.relPath));
     (0, _assert2.default)(ast.definitions.length, 'RelayJSModuleParser: Expected GraphQL text to contain at least one definition (fragment, mutation, query, subscription), got `#{template}`.');
     (_astDefinitions = astDefinitions).push.apply(_astDefinitions, _toConsumableArray(ast.definitions));

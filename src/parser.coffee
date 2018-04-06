@@ -22,6 +22,7 @@ parseFile = (baseDir, file) ->
 	astDefinitions = []
 
 	for template in FindGraphQLTags.memoizedFind(text, baseDir, file, {})
+		template = template.replace /\\n/g, '\n'
 		ast = GraphQL.parse(new GraphQL.Source(template, file.relPath))
 
 		assert ast.definitions.length,
